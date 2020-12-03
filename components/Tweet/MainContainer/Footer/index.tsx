@@ -11,12 +11,12 @@ export type FooterContainerProps = {
 const Footer = ({tweet} : FooterContainerProps) => (
     <View style={styles.container}>
         <View style={styles.IconContainer}>
-            <Feather name={"message-circle"} size={20} color={'grey'} />
+            <Feather name={"message-circle"} size={22} color={'grey'} />
             <Text style={styles.number}>{tweet.numberOfComments}</Text>
         </View>
 
         <View style={styles.IconContainer}>
-            <EvilIcons name={"retweet"} size={20} color={'grey'} />
+            <EvilIcons name={"retweet"} size={28} color={'grey'} />
             <Text style={styles.number}>{tweet.numberOfRetweets}</Text>
         </View >
 
@@ -26,7 +26,7 @@ const Footer = ({tweet} : FooterContainerProps) => (
         </View>
 
         <View style={styles.IconContainer}>
-            <EvilIcons name={"share-google"} size={20} color={'grey'} />
+            <EvilIcons name={"share-google"} size={28} color={'grey'} />
             <Text style={styles.number}>{tweet.numberOfRetweets}</Text>
         </View>
     </View>
