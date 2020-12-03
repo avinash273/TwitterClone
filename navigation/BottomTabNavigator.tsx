@@ -1,13 +1,14 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, HomeNavigatorParamList, TabTwoParamList } from '../types';
+import ProfilePicture from '../components/ProfilePicture';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -68,10 +69,24 @@ function HomeNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="HomeScreen"
-        component={TabOneScreen}
+        component={HomeScreen}
         options={{
+            headerRightContainerStyle: {
+                marginRight: 15,
+            },
+            headerLeftContainerStyle: {
+                marginLeft: 15,
+            },
             headerTitle: () => (
-                <Ionicons name={"logo-twitter"} size={30} color={Colors.light.tint}/>
+                <Ionicons name={"logo-twitter"} size={40} color={Colors.light.tint}/>
+                //<Ionicons name={"logo-react"} size={30} color={Colors.light.tint}/>
+
+            ),
+            headerRight: () => (
+                <MaterialCommunityIcons name={"star-four-points-outline"} size={30} color={Colors.light.tint}/>
+            ),
+            headerLeft: () => (
+                <ProfilePicture size={40} image={'https://cdn.pixabay.com/photo/2019/10/06/10/03/team-4529717_1280.jpg'} />
             )
         }}
       />
