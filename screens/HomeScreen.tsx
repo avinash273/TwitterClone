@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import Tweet from "../components/Tweet";
+import Feed from "../components/Feed";
 import tweets from '../data/tweets';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Tweet tweet={tweets[0]} />
+      <Feed />
     </View>
   );
 }
