@@ -7,11 +7,11 @@ import ProfilePicture from "../components/ProfilePicture";
 import {useState} from "react";
 
 export default function NewTweetScreen() {
-    const[tweet, setTweet] = useState("");
-    const[imageURL, setImageURL] = useState("");
+    const[tweet, setTweet] = useState("Hello World");
+    const[imageUrl, setImageUrl] = useState("");
 
     const onPostTweet = () => {
-        console.warn("onPostTweet");
+        console.log(`Posting the tweet: ${tweet} Image: ${imageUrl}`);
     }
 
     return (
@@ -27,6 +27,8 @@ export default function NewTweetScreen() {
                 <ProfilePicture image={'https://avatars2.githubusercontent.com/u/30752963?s=400&u=a7fe229140729395e1ebceae6bcf607e3aecb8f3&v=4'} />
                 <View style={styles.inputContainer}>
                     <TextInput
+                        value={tweet}
+                        onChangeText={(value) => setTweet(value)}
                         multiline={true}
                         numberOfLines={3}
                         style={styles.tweetInput}
@@ -34,6 +36,8 @@ export default function NewTweetScreen() {
                         placeholder={"What's happening"}
                     />
                     <TextInput
+                        value={imageUrl}
+                        onChangeText={(value) => setImageUrl(value)}
                         style={styles.imageInput}
                         placeholder={"Image url (optional)"}
                     />
