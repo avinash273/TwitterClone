@@ -5,13 +5,28 @@ import {AntDesign} from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 import ProfilePicture from "../components/ProfilePicture";
 import {useState} from "react";
+import {API, graphqlOperation, Auth} from 'aws-amplify';
+import { createTweet } from '../graphql/mutations';
 
 export default function NewTweetScreen() {
     const[tweet, setTweet] = useState("");
     const[imageUrl, setImageUrl] = useState("");
 
-    const onPostTweet = () => {
-        console.log(`Posting the tweet: ${tweet} Image: ${imageUrl}`);
+    const onPostTweet = async () => {
+        // console.log(`Posting the tweet: ${tweet} Image: ${imageUrl}`);
+
+        try{
+            const currentUser = await Auth.currentAuthenticatedUser({bypassCache:true});
+            const newTweet = {
+                content: tweet,
+                image: imageUrl,
+                userID: currentUser.attributes.sub,
+            }
+            await API.graphql(graphqlOperation(createTweet, {input: newTweet}))
+        }
+        catch (e){
+            console.log(e);
+        }
     }
 
     return (
