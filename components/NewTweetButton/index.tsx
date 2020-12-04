@@ -10,7 +10,8 @@ const NewTweetButton = () => {
 
     const navigation = useNavigation();
     const onPress = () => {
-        console.warn('Open new tweet');
+        // console.warn('Open new tweet');
+        navigation.navigate('NewTweet');
     }
 
     return (
