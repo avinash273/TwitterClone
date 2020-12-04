@@ -3,7 +3,8 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container:{
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginTop: 5,
     },
     number: {
         marginLeft: 5,

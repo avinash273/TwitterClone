@@ -7,11 +7,10 @@ import Feed from "../components/Feed";
 import tweets from '../data/tweets';
 import NewTweetButton from "../components/NewTweetButton";
 
-export default function HomeScreen() {
+export default function NewTweetScreen() {
   return (
     <View style={styles.container}>
-      <Feed />
-      <NewTweetButton />
+        <Text>Hello World</Text>
     </View>
   );
 }
