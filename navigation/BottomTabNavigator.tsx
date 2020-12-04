@@ -9,6 +9,9 @@ import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, HomeNavigatorParamList, TabTwoParamList } from '../types';
 import ProfilePicture from '../components/ProfilePicture';
+import {useEffect, useState} from "react";
+import {API, Auth, graphqlOperation} from 'aws-amplify';
+import { getUser } from '../graphql/queries';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -65,6 +68,27 @@ function TabBarIcon(props: { name: string; color: string }) {
 const TabOneStack = createStackNavigator<HomeNavigatorParamList>();
 
 function HomeNavigator() {
+    const [user, setUser] = useState(null);
+
+    useEffect( () => {
+        const fetchUser = async() => {
+            const userInfo = await Auth.currentAuthenticatedUser({bypassCache:true});
+            if(!userInfo){
+                return;
+            }
+            try{
+                const userData = await API.graphql(graphqlOperation(getUser, {id: userInfo.attributes.sub}))
+                if(userData){
+                    setUser(userData.data.getUser);
+                }
+            }
+            catch (e){
+                console.log(e);
+            }
+        }
+        fetchUser();
+    }, [])
+
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
@@ -86,7 +110,7 @@ function HomeNavigator() {
                 <MaterialCommunityIcons name={"star-four-points-outline"} size={30} color={Colors.light.tint}/>
             ),
             headerLeft: () => (
-                <ProfilePicture size={40} image={'https://cdn.pixabay.com/photo/2019/10/06/10/03/team-4529717_1280.jpg'} />
+                <ProfilePicture size={40} image={user?.image} />
             )
         }}
       />
