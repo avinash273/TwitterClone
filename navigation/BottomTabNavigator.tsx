@@ -79,6 +79,7 @@ function HomeNavigator() {
             try{
                 const userData = await API.graphql(graphqlOperation(getUser, {id: userInfo.attributes.sub}))
                 if(userData){
+                    // @ts-ignore
                     setUser(userData.data.getUser);
                 }
             }
@@ -87,9 +88,9 @@ function HomeNavigator() {
             }
         }
         fetchUser();
-    }, [])
+    }, []);
 
-  return (
+    return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="HomeScreen"
@@ -110,6 +111,7 @@ function HomeNavigator() {
                 <MaterialCommunityIcons name={"star-four-points-outline"} size={30} color={Colors.light.tint}/>
             ),
             headerLeft: () => (
+                // @ts-ignore
                 <ProfilePicture size={40} image={user?.image} />
             )
         }}

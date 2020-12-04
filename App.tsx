@@ -3,8 +3,10 @@ import React, {useEffect} from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //https://docs.amplify.aws/start/getting-started/auth/q/integration/react-native
+// @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
 import Amplify, {Auth, API, graphqlOperation} from 'aws-amplify';
+// @ts-ignore
 import config from './aws-exports';
 Amplify.configure(config);
 
@@ -22,7 +24,7 @@ function App() {
     return 'https://cdn.fastly.picmonkey.com/contentful/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=800&q=70'
   }
 
-  const saveUserToDB = async (user) => {
+  const saveUserToDB = async (user: { id: any; username: any; name: any; email: any; image: string; }) => {
     await API.graphql(graphqlOperation(createUser, {input: user}))
   }
 
@@ -36,6 +38,7 @@ function App() {
         //Check if user already exists in database
         const userData = await API.graphql(graphqlOperation(getUser, {id: userInfo.attributes.sub}));
         console.log(userData);
+        // @ts-ignore
         if(!userData.data.getUser){
           const user = {
             id: userInfo.attributes.sub,
