@@ -7,10 +7,14 @@ import ProfilePicture from "../components/ProfilePicture";
 import {useState} from "react";
 import {API, graphqlOperation, Auth} from 'aws-amplify';
 import { createTweet } from '../graphql/mutations';
+import {useNavigation} from "@react-navigation/native";
+
 
 export default function NewTweetScreen() {
     const[tweet, setTweet] = useState("");
     const[imageUrl, setImageUrl] = useState("");
+
+    const navigation = useNavigation();
 
     const onPostTweet = async () => {
         // console.log(`Posting the tweet: ${tweet} Image: ${imageUrl}`);
@@ -23,6 +27,9 @@ export default function NewTweetScreen() {
                 userID: currentUser.attributes.sub,
             }
             await API.graphql(graphqlOperation(createTweet, {input: newTweet}))
+            navigation.goBack();
+
+            // console.warn("Tweet posted");
         }
         catch (e){
             console.log(e);
@@ -32,7 +39,10 @@ export default function NewTweetScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.headerContainer}>
-                <AntDesign  name ="close" size={30} color={Colors.light.tint} />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <AntDesign  name ="close" size={30} color={Colors.light.tint} />
+                </TouchableOpacity>
+
                 <TouchableOpacity style={styles.button} onPress={onPostTweet}>
                     <Text style={styles.buttonText}>Tweet</Text>
                 </TouchableOpacity>
