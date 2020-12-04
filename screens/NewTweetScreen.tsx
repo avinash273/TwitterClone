@@ -7,7 +7,7 @@ import ProfilePicture from "../components/ProfilePicture";
 import {useState} from "react";
 
 export default function NewTweetScreen() {
-    const[tweet, setTweet] = useState("Hello World");
+    const[tweet, setTweet] = useState("");
     const[imageUrl, setImageUrl] = useState("");
 
     const onPostTweet = () => {
