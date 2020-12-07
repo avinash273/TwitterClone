@@ -44,7 +44,7 @@ export default function NewTweetScreen() {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={onPostTweet}>
-                    <Text style={styles.buttonText}>Tweet</Text>
+                    <Text style={styles.buttonText}>Post</Text>
                 </TouchableOpacity>
             </View>
 
@@ -58,13 +58,13 @@ export default function NewTweetScreen() {
                         numberOfLines={3}
                         style={styles.tweetInput}
 
-                        placeholder={"What's happening"}
+                        placeholder={"What's your opinion?"}
                     />
                     <TextInput
                         value={imageUrl}
                         onChangeText={(value) => setImageUrl(value)}
                         style={styles.imageInput}
-                        placeholder={"Image url (optional)"}
+                        placeholder={"Add image URL (optional)"}
                     />
                 </View>
 
@@ -104,13 +104,18 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         marginLeft: 10,
+
     },
     tweetInput: {
         height: 100,
         maxHeight: 300,
         fontSize: 20,
+        // borderColor: 'gray',
+        // borderWidth: 1,
     },
     imageInput: {
-
+        fontSize: 20,
+        // borderColor: 'gray',
+        // borderWidth: 1,
     },
 });

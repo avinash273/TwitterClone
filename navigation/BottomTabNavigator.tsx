@@ -1,6 +1,8 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import {AntDesign} from "@expo/vector-icons";
+import { Entypo } from '@expo/vector-icons';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -105,10 +107,15 @@ function HomeNavigator() {
             headerTitle: () => (
                 <Ionicons name={"logo-twitter"} size={40} color={Colors.light.tint}/>
                 //<Ionicons name={"logo-react"} size={30} color={Colors.light.tint}/>
+                // <AntDesign name="aliwangwang" size={40} color={Colors.light.tint} />
+                // <Entypo name="chat" size={40} color={Colors.light.tint} />
+
+
 
             ),
             headerRight: () => (
                 <MaterialCommunityIcons name={"star-four-points-outline"} size={30} color={Colors.light.tint}/>
+                // <AntDesign name="star" size={30} color={Colors.light.tint} />
             ),
             headerLeft: () => (
                 // @ts-ignore
