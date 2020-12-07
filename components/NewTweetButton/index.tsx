@@ -22,10 +22,10 @@ const NewTweetButton = () => {
             onPress={onPress}
             activeOpacity={0.8}
         >
-            {/*<MaterialCommunityIcons name={"feather"} size={30} color={"white"} />*/}
+            <MaterialCommunityIcons name={"feather"} size={30} color={"white"} />
             {/*<Entypo name="pencil"  size={30} color={"white"} />*/}
             {/*<FontAwesome name="pencil" size={30} color={"white"} />*/}
-            <FontAwesome name="pencil-square-o" size={30} color={"white"} />
+            {/*<FontAwesome name="pencil-square-o" size={30} color={"white"} />*/}
 
         </TouchableOpacity>
     );
