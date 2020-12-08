@@ -15,6 +15,7 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import { getUser } from './graphql/queries';
 import { createUser } from './graphql/mutations';
+import 'react-native-get-random-values';
 
 function App() {
   const isLoadingComplete = useCachedResources();

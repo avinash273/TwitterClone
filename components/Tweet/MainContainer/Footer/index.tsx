@@ -52,6 +52,7 @@ const Footer = ({tweet}: FooterContainerProps) => {
 
     const removeLike = async () => {
         try{
+            // @ts-ignore
             await API.graphql(graphqlOperation(deleteLike, {input: {id: myLike.id}}));
             setLikesCount( likesCount - 1);
             setMyLike(null);
